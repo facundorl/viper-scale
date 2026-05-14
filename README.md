@@ -15,4 +15,4 @@ En esta etapa, el sitio cuenta con:
 - Cards ordenadas mostrando los productos destacados.
 - Animaciones como transition, hover y box-shadow.
 - Diseño totalmente responsivo con Media Queries.
-- -Formulario de contacto funcional utilizando integración con Formspree.
+- Formulario de contacto funcional utilizando integración con Formspree.
