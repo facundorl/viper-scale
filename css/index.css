@@ -11,7 +11,7 @@ body {
     background-color: white;
 }
 
-/* ── HEADER ── */
+
 .header {
     background-color: darkgreen;
     display: flex;
@@ -33,7 +33,7 @@ img {
     max-width: 100%;
 }
 
-/* ── LOGO ── */
+
 .logo-container {
     text-align: center;
     padding: 0;
@@ -58,7 +58,7 @@ img {
     transform: scale(1.03);
 }
 
-/* ── NAV ── */
+
 .header .nav {
     list-style: none;
     display: flex;
@@ -101,7 +101,7 @@ img {
     color: white;
 }
 
-/* ── CARRUSEL ── */
+
 .carousel-wrapper {
     width: 100%;
     background-color: #111;
@@ -131,7 +131,7 @@ img {
     display: block;
 }
 
-/* Botones prev / next */
+
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -164,7 +164,7 @@ img {
     right: 14px;
 }
 
-/* Dots indicadores */
+
 .carousel-dots {
     position: absolute;
     bottom: 14px;
@@ -213,7 +213,7 @@ img {
     margin-bottom: 10px;
 }
 
-/* ── POPULARES ── */
+
 .popular-section {
     padding: 50px 10%;
     background-color: #f9f9f9;
