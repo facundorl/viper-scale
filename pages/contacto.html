@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viper Scale | Contacto</title>
+    <link rel="stylesheet" href="../css/contacto.css">
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="../resources/viper-logo.png" alt="Logo" class="logo-header">
+    </div>
+
+    <header class="header">
+        <ul class="nav">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Puntos de retiro</a></li>
+
+        </ul>
+    </header>
+
+    <main class="main-contacto">
+        <section class="form-section section">
+            <div class="form-header">
+                <h1 class="form-title">¡CONTÁCTANOS!</h1>
+                <h2 class="form-subtitle">Si tenes alguna duda sobre disponibilidad de productos, ofertas, puntos de
+                    retiro. No dudes en mandarnos un mensaje por este formulario</h2>
+            </div>
+            <form action="https://formspree.io/f/xdabrzng" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <label for="apellido">Apellido</label>
+                    <input type="text" name="apellido" placeholder="Tu apellido" required>
+                    <label>Correo (Mail)</label>
+                    <input type="email" name="email" placeholder="usuario@gmail.com" required>
+                    <label>Teléfono</label>
+                    <input type="tel" placeholder="+54 9 11 0000-0000">
+                    <label>Mensaje</label>
+                    <textarea name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar mensaje</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

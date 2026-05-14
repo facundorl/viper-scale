@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +11,171 @@
     </style>
 
 </head>
+
 <body>
+    <div class="logo-container">
+        <img src="./resources/viper-logo.png" alt="Logo" class="logo-header">
+    </div>
+
     <header class="header">
-        <div class="header-container">
-            <img src="./resources/viper-logo.png" alt="logo">
-        </div>
+        <ul class="nav">
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="./pages/contacto.html">Contacto</a></li>
+            <li><a href="#">Puntos de retiro</a></li>
+
+        </ul>
     </header>
 
-    <nav class="nav-bar">
-        <ul>
-            <li><a href="./pages/productos.html">Productos</a></li>
-            <li><a href="./pages/nosotros.html">Nosotros</a></li>
-            <li><a href="./pages/marcas.html">Marcas</a></li>
-            <li><a href="./pages/contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
+    <main>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="./resources/a4-carousel.jpg" alt="Slide1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="./resources/f14-carousel.jpg" alt="Slide2">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="./resources/mig29-carousel.jpg" alt="Slide3">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="./resources/eftyphoon-carousel.jpg" alt="Slide4">
+                </div>
+
+
+                <div class="carousel-slide">
+                    <img src="./resources/tornado-carousel.jpg" alt="Slide5">
+                </div>
+
+                <button class="carousel-btn carousel-btn--prev" aria-label="Imagen anterior">&#10094;</button>
+                <button class="carousel-btn carousel-btn--next" aria-label="Imagen siguiente">&#10095;</button>
+
+                <!-- Indicadores (dots) -->
+
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                    <span class="carousel-dot" data-index="3"></span>
+                    <span class="carousel-dot" data-index="4"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="welcome-below">
+            <h1 class="welcome-text-h1">¡BIENVENIDO/A!</h1>
+            <h3 class="welcome-text-h3">Acá en Viper Scale somos aficionados al modelismo estatico, encontrá los
+                aviones que marcaron la aviacón bélica.</h3>
+            <h3 class="welcome-text-h3">Podés encontrar modelos de diferentes marcas y escalas a precios realmente
+                tentadores</h3>
+        </div>
+
+        <section class="popular-section">
+            <h2 class="popular-title">¡LOS MÁS DESTACADOS! </h2>
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="./resources/f14-tg-1-48.jpg" alt="Producto 1" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">F-14 Tomcat (Top Gun)</h3>
+                        <p class="card-scale">Escala: 1/48</p>
+                        <p class="card-mark">Marca: Revell</p>
+                        <p class="card-price">$35.000</p>
+                        <button class="card-btn">Agregar al carrito</button>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="./resources/mirageiii-fr-1-32.jpg" alt="Producto 2" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Mirage III E/RD/O</h3>
+                        <p class="card-scale">Escala: 1/32</p>
+                        <p class="card-mark">Marca: Revell</p>
+                        <p class="card-price">$32.000</p>
+                        <button class="card-btn">Agregar al carrito</button>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="./resources/a4ef-1-48.jpg" alt="Producto 3" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">A-4 E/F/G SkyHawk</h3>
+                        <p class="card-scale">Escala: 1/48</p>
+                        <p class="card-mark">Marca: Italeri</p>
+                        <p class="card-price">$30.000</p>
+                        <button class="card-btn">Agregar al carrito</button>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="card">
+                    <img src="./resources/mig29-zvezda-1-72.jpg" alt="Producto 4" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">MIG-29 Fulcrum</h3>
+                        <p class="card-scale">Escala: 1/72</p>
+                        <p class="card-mark">Marca: Zvezda</p>
+                        <p class="card-price">$27.000</p>
+                        <button class="card-btn">Agregar al carrito</button>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="card">
+                    <img src="./resources/f16-airfix-1-72.jpg" alt="Producto 5" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">F-16 Fighting Falcon</h3>
+                        <p class="card-scale">Escala: 1/72</p>
+                        <p class="card-mark">Marca: Airfix</p>
+                        <p class="card-price">$29.000</p>
+                        <button class="card-btn">Agregar al carrito</button>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="card">
+                    <img src="./resources/a10-italeri-1-72..jpg" alt="Producto 6" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">A-10 Thunderbolt II (25° Gulf War)</h3>
+                        <p class="card-scale">Escala: 1/72</p>
+                        <p class="card-mark">Marca: Italeri</p>
+                        <p class="card-price">$30.000</p>
+                        <button class="card-btn">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const btnPrev = document.querySelector('.carousel-btn--prev');
+        const btnNext = document.querySelector('.carousel-btn--next');
+
+        let current = 0;
+        const total = slides.length;
+
+        function goTo(index) {
+            current = (index + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach(d => d.classList.remove('active'));
+            dots[current].classList.add('active');
+        }
+
+        btnPrev.addEventListener('click', () => goTo(current - 1));
+        btnNext.addEventListener('click', () => goTo(current + 1));
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+        });
+
+        // Auto-avance cada 5 segundos
+        setInterval(() => goTo(current + 1), 3500);
+
+    </script>
+
 </body>
+
 </html>

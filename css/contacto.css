@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: white;
+}
+
+/* ── HEADER ── */
+.header {
+    background-color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 14px 10%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 5;
+}
+
+.header .header-logo {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ── LOGO ── */
+.logo-container {
+    text-align: center;
+    padding: 0;
+    background-color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logo-container img {
+    height: 280px;
+    width: auto;
+    max-width: 700px;
+    transition: transform 0.3s;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    display: block;
+}
+
+.logo-container img:hover {
+    transform: scale(1.03);
+}
+
+/* ── NAV ── */
+.header .nav {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.header .nav li {
+    display: inline-block;
+    padding: 10px 36px;
+    text-align: center;
+    background-color: yellow;
+    border-radius: 10px;
+    transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.header .nav li:hover {
+    background-color: black;
+    transform: scale(1.1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.header .nav li a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.header .nav a {
+    font-size: 1rem;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+}
+
+.header .nav a:hover {
+    color: white;
+}
+
+.main-contacto {
+    display: grid;
+    place-items: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.section {
+    background-color: darkgreen;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: min(100%, 540px);
+    padding: 34px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(238, 255, 0, 0.1);
+
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: white;
+    line-height: 1.5;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    margin-top: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: darkgreen;
+    box-shadow: 0 0 5px rgba(0, 100, 0, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.02);
+}
