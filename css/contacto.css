@@ -80,7 +80,7 @@ img {
 .header .nav li:hover {
     background-color: black;
     transform: scale(1.1);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 .header .nav li a:hover {
