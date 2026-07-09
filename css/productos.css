@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: white;
+}
+
+
+.header {
+    background-color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 14px 10%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 5;
+}
+
+.header .header-logo {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.logo-container {
+    text-align: center;
+    padding: 0;
+    background-color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logo-container img {
+    height: 280px;
+    width: auto;
+    max-width: 700px;
+    transition: transform 0.3s;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    display: block;
+}
+
+.logo-container img:hover {
+    transform: scale(1.03);
+}
+
+
+.header .nav {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.header .nav li {
+    display: inline-block;
+    padding: 10px 36px;
+    text-align: center;
+    background-color: yellow;
+    border-radius: 10px;
+    transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.header .nav li:hover {
+    background-color: black;
+    transform: scale(1.1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.header .nav li a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.header .nav a {
+    font-size: 1rem;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+}
+
+.header .nav a:hover {
+    color: white;
+}
+
+
+.products-section {
+    padding: 50px 10%;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.products-title-h1 {
+    font-size: 2.5rem;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.products-subtitle-h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #444;
+    margin-bottom: 50px;
+    line-height: 1.6;
+}
+
+.brand-container {
+    margin-bottom: 100px;
+}
+
+.brand-title {
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px solid yellow;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.brand-logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background-color: darkgreen;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 15px yellow;
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.card-scale {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.card-mark {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.card-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.card-btn {
+    margin-top: auto;
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.card-btn:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+    .products-section {
+        padding: 30px 5%;
+    }
+
+    .products-title-h1 {
+        font-size: 1.8rem;
+    }
+
+    .products-subtitle-h2 {
+        font-size: 1rem;
+        margin-bottom: 35px;
+    }
+
+    .brand-title {
+        margin-bottom: 30px;
+    }
+
+    .brand-logo-img {
+        height: 80px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .products-section {
+        padding: 25px 4%;
+    }
+
+    .products-title-h1 {
+        font-size: 1.4rem;
+    }
+
+    .products-subtitle-h2 {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+
+    .brand-title {
+        margin-bottom: 20px;
+    }
+
+    .brand-logo-img {
+        height: 60px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-img {
+        height: 180px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
