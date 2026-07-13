@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito | Viper Scale</title>
+    <meta name="description" content="Revisá los productos en tu carrito y confirmá tu compra en Viper Scale.">
+    <link rel="stylesheet" href="../css/carrito.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../resources/viper-logo.png" alt="Viper Scale Logo" class="logo-header">
+        </a>
+    </div>
+
+    <header class="header">
+        <ul class="nav">
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="#">Puntos de retiro</a></li>
+        </ul>
+    </header>
+
+    <section class="carrito-section">
+        <h1 class="carrito-titulo">¡Ya casi estamos!</h1>
+        <p class="carrito-subtitulo">Revisá tus productos antes de confirmar la compra</p>
+
+        <div id="carrito-main"></div>
+    </section>
+
+    <script src="../js/carrito.js"></script>
+    <script>
+        /* ============================================================
+           Lógica específica de la página del carrito
+           ============================================================ */
+
+        function renderizarCarrito() {
+            let contenedor = document.getElementById("carrito-main");
+            let carrito = obtenerCarrito();
+
+            if (carrito.length === 0) {
+                contenedor.innerHTML = `
+                    <div class="carrito-vacio">
+                        <h2>Tu carrito está vacío</h2>
+                        <p>No hay aeronaves en el hangar. ¡Explora nuestro catálogo para ampliar tu colección!</p>
+                        <a href="productos.html" class="btn-volver">Ver productos</a>
+                    </div>
+                `;
+                return;
+            }
+
+            let itemsHTML = '';
+
+            for (let i = 0; i < carrito.length; i++) {
+                let item = carrito[i];
+                let subtotal = item.precio * item.cantidad;
+
+                itemsHTML += `
+                    <div class="carrito-item" data-index="${i}">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="carrito-item-img">
+                        <div class="carrito-item-info">
+                            <span class="carrito-item-nombre">${item.nombre}</span>
+                            <span class="carrito-item-detalle">${item.escala} · ${item.marca}</span>
+                            <span class="carrito-item-precio-unitario">${formatearPrecio(item.precio)} c/u</span>
+                        </div>
+                        <div class="carrito-item-acciones">
+                            <span class="carrito-item-subtotal">${formatearPrecio(subtotal)}</span>
+                            <div class="cantidad-control">
+                                <button class="cantidad-btn btn-menos" data-index="${i}">−</button>
+                                <span class="cantidad-valor">${item.cantidad}</span>
+                                <button class="cantidad-btn btn-mas" data-index="${i}">+</button>
+                            </div>
+                            <button class="btn-eliminar" data-index="${i}">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            let totalProductos = calcularCantidadTotal();
+            let totalPrecio = calcularTotal();
+
+            contenedor.innerHTML = `
+                <div class="carrito-contenido">
+                    <div class="carrito-items">
+                        ${itemsHTML}
+                    </div>
+                    <div class="carrito-resumen">
+                        <h3 class="resumen-titulo">Resumen de compra</h3>
+                        <div class="resumen-linea">
+                            <span class="label">Productos (${totalProductos})</span>
+                            <span class="valor">${formatearPrecio(totalPrecio)}</span>
+                        </div>
+                        <div class="resumen-linea">
+                            <span class="label">Envío</span>
+                            <span class="valor" style="color: white; font-weight: 700;">Gratis</span>
+                        </div>
+                        <div class="resumen-linea total">
+                            <span class="label">Total</span>
+                            <span class="valor">${formatearPrecio(totalPrecio)}</span>
+                        </div>
+                        <button class="btn-confirmar" id="btn-confirmar-compra">Confirmar compra</button>
+                        <button class="btn-vaciar-carrito" id="btn-vaciar">Vaciar carrito</button>
+                        <a href="productos.html" class="btn-seguir">← Seguir comprando</a>
+                    </div>
+                </div>
+            `;
+
+            conectarEventosCarrito();
+        }
+
+        function conectarEventosCarrito() {
+            // Botones - (disminuir cantidad)
+            let botonesMenos = document.querySelectorAll(".btn-menos");
+            for (let btn of botonesMenos) {
+                btn.addEventListener("click", function () {
+                    let idx = parseInt(btn.getAttribute("data-index"));
+                    let carrito = obtenerCarrito();
+                    let nuevaCantidad = carrito[idx].cantidad - 1;
+                    cambiarCantidad(idx, nuevaCantidad);
+                    renderizarCarrito();
+                    actualizarBadge();
+                });
+            }
+
+            // Botones + (aumentar cantidad)
+            let botonesMas = document.querySelectorAll(".btn-mas");
+            for (let btn of botonesMas) {
+                btn.addEventListener("click", function () {
+                    let idx = parseInt(btn.getAttribute("data-index"));
+                    let carrito = obtenerCarrito();
+                    let nuevaCantidad = carrito[idx].cantidad + 1;
+                    cambiarCantidad(idx, nuevaCantidad);
+                    renderizarCarrito();
+                    actualizarBadge();
+                });
+            }
+
+            // Botones eliminar
+            let botonesEliminar = document.querySelectorAll(".btn-eliminar");
+            for (let btn of botonesEliminar) {
+                btn.addEventListener("click", function () {
+                    let idx = parseInt(btn.getAttribute("data-index"));
+                    quitarDelCarrito(idx);
+                    renderizarCarrito();
+                    actualizarBadge();
+                });
+            }
+
+            // Botón vaciar carrito
+            let btnVaciar = document.getElementById("btn-vaciar");
+            if (btnVaciar) {
+                btnVaciar.addEventListener("click", function () {
+                    vaciarCarrito();
+                    renderizarCarrito();
+                    actualizarBadge();
+                });
+            }
+
+            // Botón confirmar compra
+            let btnConfirmar = document.getElementById("btn-confirmar-compra");
+            if (btnConfirmar) {
+                btnConfirmar.addEventListener("click", function () {
+                    mostrarModalConfirmacion();
+                });
+            }
+        }
+
+        function mostrarModalConfirmacion() {
+            let total = calcularTotal();
+            let cantidad = calcularCantidadTotal();
+
+            let overlay = document.createElement("div");
+            overlay.className = "modal-overlay";
+            overlay.innerHTML = `
+                <div class="modal-contenido">
+                    <h2>¡Gracias por tu compra!</h2>
+                    <p>Tu pedido de <strong>${cantidad} producto${cantidad !== 1 ? 's' : ''}</strong> fue registrado correctamente.</p>
+                    <div class="modal-total">${formatearPrecio(total)}</div>
+                    <p class="modal-nota">Esta compra es solo una demostración. No se procesa ningún cobro real.</p>
+                    <button class="btn-modal-cerrar" id="btn-cerrar-modal">Cerrar</button>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+
+            // Cerrar modal
+            document.getElementById("btn-cerrar-modal").addEventListener("click", function () {
+                overlay.style.animation = "fadeIn 0.25s ease-in reverse";
+                setTimeout(function () {
+                    overlay.remove();
+                    vaciarCarrito();
+                    renderizarCarrito();
+                    actualizarBadge();
+                }, 250);
+            });
+
+            // También cerrar al hacer click fuera del modal
+            overlay.addEventListener("click", function (e) {
+                if (e.target === overlay) {
+                    overlay.style.animation = "fadeIn 0.25s ease-in reverse";
+                    setTimeout(function () {
+                        overlay.remove();
+                        vaciarCarrito();
+                        renderizarCarrito();
+                        actualizarBadge();
+                    }, 250);
+                }
+            });
+        }
+
+        // Inicialización de la página del carrito
+        document.addEventListener("DOMContentLoaded", function () {
+            renderizarCarrito();
+        });
+    </script>
+</body>
+
+</html>
