@@ -15,11 +15,10 @@ body {
 .header {
     background-color: darkgreen;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: auto;
-    padding: 14px 10%;
-    text-align: center;
+    padding: 15px 5%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 5;
@@ -35,19 +34,17 @@ img {
 
 
 .logo-container {
-    text-align: center;
-    padding: 0;
-    background-color: darkgreen;
     display: flex;
-    justify-content: center;
     align-items: center;
     overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 100;
 }
 
 .logo-container img {
-    height: 280px;
+    height: 130px;
     width: auto;
-    max-width: 700px;
     transition: transform 0.3s;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -58,47 +55,55 @@ img {
     transform: scale(1.03);
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 
 .header .nav {
     list-style: none;
     display: flex;
-    gap: 16px;
+    gap: 32px;
     align-items: center;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .header .nav li {
     display: inline-block;
-    padding: 10px 36px;
+    padding: 8px 16px;
     text-align: center;
-    background-color: yellow;
-    border-radius: 10px;
-    transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .header .nav li:hover {
-    background-color: black;
-    transform: scale(1.1);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 
 .header .nav li a:hover {
     text-decoration: none;
-    color: white;
+    color: #f1f1f1;
 }
 
 .header .nav a {
-    font-size: 1rem;
-    color: black;
+    font-size: 1.05rem;
+    color: white;
     font-family: "Roboto", sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     text-decoration: none;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
 .header .nav a:hover {
-    color: white;
+    color: #f1f1f1;
 }
 
 
@@ -166,12 +171,12 @@ img {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 30px;
+    gap: 20px;
 }
 
 .card {
     background-color: darkgreen;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -180,48 +185,48 @@ img {
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    box-shadow: 10px 10px 15px yellow;
+    box-shadow: 8px 8px 12px yellow;
 }
 
 .card-img {
     width: 100%;
-    height: 200px;
+    height: 160px;
     object-fit: cover;
     background-color: #eee;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .card-scale {
     color: white;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
 }
 
 .card-mark {
     color: white;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
 }
 
 .card-price {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .card-btn {
@@ -229,10 +234,10 @@ img {
     background-color: yellow;
     color: black;
     border: none;
-    padding: 12px 20px;
-    font-size: 1rem;
+    padding: 10px 14px;
+    font-size: 0.85rem;
     font-weight: bold;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
@@ -248,26 +253,53 @@ img {
 @media (max-width: 768px) {
 
     .logo-container img {
-        height: 180px;
-        max-width: 90%;
+        height: 100px;
     }
 
     .header {
         padding: 12px 5%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+        z-index: 100;
     }
 
     .header .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: darkgreen;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 140px 5% 20px 5%;
+        gap: 20px;
+        display: none;
+        z-index: 99;
+    }
+
+    .header.nav-open .nav {
+        display: flex;
     }
 
     .header .nav li {
-        padding: 8px 22px;
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
     }
 
     .header .nav a {
-        font-size: 0.85rem;
+        font-size: 1.2rem;
+    }
+    
+    #carrito-flotante {
+        top: auto !important;
+        bottom: 22px !important;
     }
 
     .carousel-slide {
@@ -293,7 +325,19 @@ img {
 
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 16px;
+    }
+
+    .card-img {
+        height: 140px;
+    }
+
+    .card-content {
+        padding: 12px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
     }
 }
 
@@ -302,28 +346,30 @@ img {
 @media (max-width: 480px) {
 
     .logo-container img {
-        height: 140px;
-        max-width: 85%;
+        height: 80px;
     }
 
     .header {
         padding: 10px 4%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .header .nav {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
+        padding: 120px 4% 20px 4%;
+        gap: 15px;
     }
 
     .header .nav li {
-        padding: 10px 0;
-        width: 100%;
-        border-radius: 8px;
+        padding: 10px 16px;
     }
 
     .header .nav a {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .carousel-slide {
@@ -353,19 +399,19 @@ img {
 
     .cards-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
     }
 
     .card-img {
-        height: 180px;
+        height: 160px;
     }
 
     .card-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .card-btn {
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        padding: 10px 14px;
+        font-size: 0.85rem;
     }
 }

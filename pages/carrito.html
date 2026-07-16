@@ -13,20 +13,20 @@
 </head>
 
 <body>
-    <div class="logo-container">
-        <a href="../index.html">
-            <img src="../resources/viper-logo.png" alt="Viper Scale Logo" class="logo-header">
-        </a>
-    </div>
-
     <header class="header">
+        <div class="logo-container">
+            <img src="../resources/viper-logo.png" alt="Logo" class="logo-header">
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
         <ul class="nav">
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="./productos.html">Productos</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
             <li><a href="#">Puntos de retiro</a></li>
         </ul>
     </header>
+
 
     <section class="carrito-section">
         <h1 class="carrito-titulo">¡Ya casi estamos!</h1>
@@ -219,6 +219,15 @@
         document.addEventListener("DOMContentLoaded", function () {
             renderizarCarrito();
         });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const header = document.querySelector('.header');
+        if (menuToggle && header) {
+            menuToggle.addEventListener('click', () => {
+                header.classList.toggle('nav-open');
+            });
+        }
     </script>
 </body>
 

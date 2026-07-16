@@ -5,7 +5,7 @@
 
 const CLAVE_CARRITO = "viperscale_carrito";
 
-/* ----------- Utilidades de localStorage ----------- */
+
 
 function obtenerCarrito() {
     let guardado = localStorage.getItem(CLAVE_CARRITO);
@@ -38,11 +38,11 @@ function formatearPrecio(numero) {
 function agregarAlCarrito(producto) {
     let carrito = obtenerCarrito();
 
-    // Buscar si ya existe (por nombre + escala + marca)
+
     let existente = carrito.find(function (item) {
         return item.nombre === producto.nombre &&
-               item.escala === producto.escala &&
-               item.marca === producto.marca;
+            item.escala === producto.escala &&
+            item.marca === producto.marca;
     });
 
     if (existente) {
