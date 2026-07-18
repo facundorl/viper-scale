@@ -3,11 +3,26 @@
    Funciona con localStorage para persistir entre páginas.
    ============================================================ */
 
+/* ============================================================
+   carrito.js – Módulo de carrito para Viper Scale
+   Funciona con localStorage para persistir dentro de una misma página,
+   y con parámetros en la URL para persistir ENTRE páginas cuando el
+   sitio se abre con doble clic (file://), ya que en ese caso cada
+   archivo .html es tratado como un origen distinto y no comparte
+   localStorage ni window.name.
+   ============================================================ */
+
 const CLAVE_CARRITO = "viperscale_carrito";
 
 
 
 function obtenerCarrito() {
+    if (window.name && window.name.startsWith(CLAVE_CARRITO + "=")) {
+        try {
+            let data = JSON.parse(window.name.substring(CLAVE_CARRITO.length + 1));
+            return data;
+        } catch (e) { }
+    }
     let guardado = localStorage.getItem(CLAVE_CARRITO);
     if (guardado) {
         return JSON.parse(guardado);
@@ -17,6 +32,85 @@ function obtenerCarrito() {
 
 function guardarCarrito(carrito) {
     localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito));
+    window.name = CLAVE_CARRITO + "=" + JSON.stringify(carrito);
+}
+
+/* ----------- Codificar / decodificar carrito para pasarlo por la URL -----------
+   Necesario porque en file:// cada .html es un origen distinto y no
+   comparte localStorage. Codificamos en Base64 (seguro para UTF-8,
+   por los acentos de "Escala", "Marca", etc.) y lo mandamos como
+   parámetro ?carrito=... en los links internos. */
+
+function codificarCarritoURL(carrito) {
+    try {
+        let json = JSON.stringify(carrito);
+        let utf8 = encodeURIComponent(json).replace(/%([0-9A-F]{2})/g, function (_, p1) {
+            return String.fromCharCode("0x" + p1);
+        });
+        return encodeURIComponent(btoa(utf8));
+    } catch (e) {
+        return "";
+    }
+}
+
+function decodificarCarritoURL(texto) {
+    try {
+        let utf8 = atob(decodeURIComponent(texto));
+        let json = decodeURIComponent(utf8.split("").map(function (c) {
+            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(""));
+        return JSON.parse(json);
+    } catch (e) {
+        return null;
+    }
+}
+
+/* Al cargar cualquier página, si viene un ?carrito=... en la URL,
+   lo usamos como fuente de verdad y lo guardamos en el localStorage
+   de ESTA página, para que el resto del código funcione sin cambios. */
+
+function sincronizarCarritoDesdeURL() {
+    let params = new URLSearchParams(window.location.search);
+    let dato = params.get("carrito");
+    if (dato) {
+        let carrito = decodificarCarritoURL(dato);
+        if (carrito) {
+            guardarCarrito(carrito);
+        }
+        // Limpiamos el parámetro de la barra de direcciones (no rompe nada en file://)
+        params.delete("carrito");
+        let queryRestante = params.toString();
+        let nuevaURL = window.location.pathname + (queryRestante ? "?" + queryRestante : "") + window.location.hash;
+        window.history.replaceState({}, "", nuevaURL);
+    }
+}
+
+/* Interceptamos los clics en links internos para adjuntarles el estado
+   actual del carrito antes de navegar. Usamos delegación de eventos
+   sobre document para que también funcione con el ícono flotante,
+   que se inyecta dinámicamente. */
+
+function interceptarNavegacionInterna() {
+    document.addEventListener("click", function (e) {
+        let link = e.target.closest("a");
+        if (!link) return;
+
+        let href = link.getAttribute("href");
+        if (!href) return;
+
+        // Ignorar links externos, anclas, o especiales
+        if (/^([a-z]+:)?\/\//i.test(href)) return; // http://, https://, //...
+        if (href.startsWith("#")) return;
+        if (href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) return;
+        if (link.target === "_blank") return;
+
+        e.preventDefault();
+
+        let carrito = obtenerCarrito();
+        let datos = codificarCarritoURL(carrito);
+        let separador = href.includes("?") ? "&" : "?";
+        window.location.href = href + separador + "carrito=" + datos;
+    });
 }
 
 /* ----------- Parsear precio desde texto "$35.000" → 35000 ----------- */
@@ -81,6 +175,7 @@ function cambiarCantidad(indice, nuevaCantidad) {
 
 function vaciarCarrito() {
     localStorage.removeItem(CLAVE_CARRITO);
+    window.name = "";
 }
 
 /* ----------- Calcular total ----------- */
@@ -288,6 +383,8 @@ function conectarBotonesAgregar() {
 /* ----------- Inicialización ----------- */
 
 document.addEventListener("DOMContentLoaded", function () {
+    sincronizarCarritoDesdeURL();
+    interceptarNavegacionInterna();
     inyectarIconoCarrito();
     actualizarBadge();
     conectarBotonesAgregar();
