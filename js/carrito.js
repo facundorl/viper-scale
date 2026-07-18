@@ -299,8 +299,7 @@ function inyectarIconoCarrito() {
             justify-content: center;
             gap: 10px;
             text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
             border: 2px solid rgba(255, 255, 0, 0.5);
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
@@ -340,11 +339,9 @@ function inyectarIconoCarrito() {
     let icono = document.getElementById("carrito-flotante");
     icono.addEventListener("mouseenter", function () {
         icono.style.transform = "scale(1.12)";
-        icono.style.boxShadow = "0 8px 28px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 0, 0.3)";
     });
     icono.addEventListener("mouseleave", function () {
         icono.style.transform = "scale(1)";
-        icono.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.4)";
     });
 }
 
