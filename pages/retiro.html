@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos de retiro | Viper Scale</title>
+    <meta name="description" content="Información sobre puntos de retiro y envíos por Correo Argentino en Viper Scale.">
+    <link rel="stylesheet" href="../css/retiro.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="../resources/viper-logo.png" alt="Logo" class="logo-header">
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+        <ul class="nav">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="./productos.html">Productos</a></li>
+            <li><a href="./nosotros.html">Nosotros</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="retiro-hero">
+            <img src="../resources/local-01.png" alt="Nuestro local" class="retiro-hero-img">
+        </section>
+
+        <section class="retiro-info">
+            <h1 class="retiro-titulo">Puntos de retiro</h1>
+
+            <div class="retiro-bloque">
+                <h2>Retiro en el local</h2>
+                <div class="retiro-local-grid">
+                    <div class="retiro-local-texto">
+                        <p>
+                            Podés pasar a retirar tu pedido personalmente por nuestro local en el barrio de
+                            <strong>Caballito</strong>, sin costo adicional. Una vez que recibas la confirmación
+                            de que tu pedido está listo, podés acercarte en nuestros horarios de atención.
+                        </p>
+                        <ul class="retiro-horarios">
+                            <li><strong>Dirección:</strong> Av. Rivadavia 4520, Caballito, CABA</li>
+                            <li><strong>Lunes a viernes:</strong> 10:00 – 19:00</li>
+                            <li><strong>Sábados:</strong> 10:00 – 14:00</li>
+                        </ul>
+                    </div>
+                    <div class="retiro-local-mapa">
+                        <iframe src="https://www.google.com/maps?q=Av.+Rivadavia+4520,+Caballito,+CABA&output=embed"
+                            width="100%" height="100%" style="border:0; border-radius: 12px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación del local">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="retiro-bloque">
+                <h2>Envío por Correo Argentino</h2>
+                <p>
+                    Si no podés acercarte al local, no te preocupes. Hacemos envíos a todo el país a través de
+                    <strong>Correo Argentino</strong>. El costo del envío se calcula al momento de confirmar la
+                    compra según tu código postal. Una vez despachado, recibirás un número
+                    de seguimiento para que puedas rastrear tu paquete.
+                </p>
+                <p>
+                    Los pedidos se despachan dentro de las 48 horas hábiles posteriores a la confirmación del pago.
+                    El tiempo de entrega estimado es de 3 a 10 días hábiles según la provincia.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/carrito.js"></script>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const header = document.querySelector('.header');
+        if (menuToggle && header) {
+            menuToggle.addEventListener('click', () => {
+                header.classList.toggle('nav-open');
+            });
+        }
+    </script>
+</body>
+
+</html>
