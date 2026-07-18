@@ -249,6 +249,65 @@ img {
 }
 
 
+.conocenos-section {
+    padding: 60px 10%;
+    background-color: white;
+}
+
+.conocenos-contenido {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.conocenos-texto {
+    flex: 1;
+}
+
+.conocenos-titulo {
+    font-size: 2rem;
+    color: #111;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.conocenos-parrafo {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.conocenos-btn {
+    display: inline-block;
+    background-color: darkgreen;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.conocenos-btn:hover {
+    background-color: #004d00;
+    transform: scale(1.05);
+}
+
+.conocenos-imagen {
+    flex: 0 0 300px;
+}
+
+.conocenos-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
 
 @media (max-width: 768px) {
 
@@ -413,5 +472,23 @@ img {
     .card-btn {
         padding: 10px 14px;
         font-size: 0.85rem;
+    }
+
+    .conocenos-section {
+        padding: 40px 5%;
+    }
+
+    .conocenos-contenido {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .conocenos-titulo {
+        font-size: 1.6rem;
+    }
+
+    .conocenos-imagen {
+        flex: 0 0 auto;
+        max-width: 280px;
     }
 }

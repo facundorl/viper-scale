@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nosotros | Viper Scale</title>
+    <meta name="description" content="Conocé la historia de Viper Scale, tu tienda de modelismo estático en Caballito.">
+    <link rel="stylesheet" href="../css/nosotros.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+    </style>
 </head>
 
 <body>
@@ -16,15 +21,83 @@
         <ul class="nav">
             <li><a href="../index.html">Inicio</a></li>
             <li><a href="./productos.html">Productos</a></li>
-            <li><a href="#">Nosotros</a></li>
             <li><a href="./contacto.html">Contacto</a></li>
             <li><a href="#">Puntos de retiro</a></li>
         </ul>
     </header>
 
+    <main>
+
+
+        <section class="nosotros-contenido">
+            <div class="nosotros-bloque">
+                <div class="nosotros-texto">
+                    <h2>Nuestra Historia</h2>
+                    <p>
+                        <strong>Viper Scale</strong> nació en 2022 en el barrio porteño de Caballito, impulsada por
+                        la pasión de <strong>José Luis Gallardo</strong>, nuestro fundador y veterano de Malvinas,
+                        actual piloto
+                        retirado.
+                        El proyecto surgió cuando José tuvo una idea con sus hijos de construir un pequeño
+                        emprendimiento
+                        dedicado a brindar a los mas apasionados modelos a escala de la mayor calidad, la noticia se
+                        divulgó
+                        enseguida entre los coleccionistas y gracias a su crecimiento hoy en dia contamos con un local
+                        en Caballito.
+                    </p>
+                    <p>
+                        Nos especializamos en kits a escala de aviones militares. Trabajamos directamente con las
+                        principales marcas internacionales
+                        para ofrecer los mejores precios y la más amplia variedad.
+                    </p>
+                </div>
+                <div class="nosotros-img">
+                    <img src="../resources/fundador.png" alt="Fachada del local">
+                </div>
+            </div>
+
+            <div class="nosotros-bloque nosotros-bloque-inverso">
+                <div class="nosotros-texto">
+                    <h2>Qué Ofrecemos</h2>
+                    <p>
+                        En nuestro local encontrás kits de <strong>Revell, Italeri, Zvezda y Airfix</strong>
+                        en escalas 1/32, 1/48, 1/72 y 1/144, además de pegamentos, pinturas, pinceles y
+                        accesorios para armado.
+                    </p>
+                    <p>
+                        Organizamos encuentros mensuales de modelistas, donde compartimos técnicas de armado,
+                        pintura y weathering. Un espacio ideal para aprender y conectarse con otros apasionados
+                        del hobby.
+                    </p>
+                </div>
+                <div class="nosotros-img">
+                    <img src="../resources/gondola-01.png" alt="Interior del local">
+                </div>
+            </div>
+
+            <div class="nosotros-bloque">
+                <div class="nosotros-texto">
+                    <h2>Visitános</h2>
+                    <p>
+                        Estamos en el corazón de <strong>Caballito</strong>, a pasos de la estación Primera
+                        Junta (Línea A). Atendemos de lunes a sábados con un equipo siempre dispuesto a
+                        asesorarte y ayudarte a encontrar la pieza que falta en tu colección.
+                    </p>
+                    <ul class="nosotros-horarios">
+                        <li><strong>Lunes a viernes:</strong> 10:00 – 18:00</li>
+                        <li><strong>Sábados:</strong> 10:00 – 14:00</li>
+                        <li><strong>Domingos:</strong> Cerrado</li>
+                    </ul>
+                </div>
+                <div class="nosotros-img">
+                    <img src="../resources/local-01.png" alt="Horarios y ubicación">
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script src="../js/carrito.js"></script>
     <script>
-        // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const header = document.querySelector('.header');
         if (menuToggle && header) {
